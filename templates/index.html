@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta Timestamp="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDS</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <h1 class="text-center alert alert-danger">Intrusion Detection System</h1>
+        <div class="row">
+            <div class="col-sm-2"></div>
+
+            <!-- content goes here -->
+            <div class="col-sm-8">
+                <h2>Dashboard<a href="/blacklist"> <button class="btn btn-danger float-right">Blocked List</button></a><a
+                        href="/alldelete"> <button class="btn btn-danger float-right" style="margin-right: 20px;">Block
+                            All</button></a></h2>
+
+
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Timestamp</th>
+                            <th scope="col">Destination IP</th>
+                            <th scope="col">Source IP</th>
+                            <th scope="col">Label</th>
+                            <th scope="col">Attack Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in ids %}
+                        <tr>
+                            <td>{{row.0}}</td>
+                            <td>{{row.1}}</td>
+                            <td>{{row.2}}</td>
+                            <td>{{row.3}}</td>
+                            <td>{{row.4}}</td>
+                            <td>{{row.5}}</td>
+                            <td>
+
+
+                                <a href="/ignoredata/{{ row.0 }}" onclick="return confirm('Are Sure Want To Ignore ?')"
+                                    class="btn btn-warning btn-sm">Ignore</a>
+                                <a href="/delete/{{ row.0 }}" class="btn btn-danger btn-sm">Block</a>
+
+                            </td>
+                        </tr>
+
+
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
