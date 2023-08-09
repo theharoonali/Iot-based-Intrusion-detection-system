@@ -6,5 +6,7 @@ NEED DATASET? or Any Question?
 Feel free to contact:
 Please contact at fa19c2bb034@iub.edu.pk
 
-How to run this project:
-Steps:
+Description:
+ML Includes all the neccessary machine learning files.
+Static containes CSS, JS, Font files
+Templates contains, HTML code. 
